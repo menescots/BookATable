@@ -31,7 +31,7 @@ struct SearchHeaderView: View {
                     .frame(width: 20, height: 15)
                     .foregroundColor(.black)
             })
-            .frame(width: UIScreen.main.bounds.width - 90 ,height: 10)
+            .frame(maxWidth: .infinity, maxHeight: 10)
             .padding()
             .background(RoundedRectangle(cornerRadius: 20).fill(Color.white))
             .overlay(
@@ -50,7 +50,7 @@ struct SearchHeaderView: View {
                         .frame(width: 20, height: 15)
                         .foregroundColor(.black)
                 })
-                .frame(width: UIScreen.main.bounds.width/3, height: 10)
+                .frame(maxWidth: .infinity, maxHeight: 10)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 20).fill(Color.white))
                 .overlay(
@@ -68,7 +68,7 @@ struct SearchHeaderView: View {
                         .frame(width: 20, height: 15)
                         .foregroundColor(.black)
                 })
-                .frame(width: UIScreen.main.bounds.width/3, height: 10)
+                .frame(maxWidth: .infinity, maxHeight: 10)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 20).fill(Color.white))
                 .overlay(
@@ -99,6 +99,7 @@ struct SearchHeaderView: View {
                         .padding(.trailing, 30)
                 }
             }
+            .frame(maxWidth: .infinity)
             .padding(.bottom, 20)
         }
         .background(Color("DarkBlue"))

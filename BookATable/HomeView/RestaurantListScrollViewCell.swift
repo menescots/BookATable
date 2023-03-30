@@ -16,7 +16,7 @@ struct RestaurantListScrollViewCell: View {
             Image("thai")
                 .resizable()
                 .scaledToFill()
-                .frame(height: 140 )
+                .frame(height: 160)
                 .clipped()
                 .cornerRadius(20)
             
