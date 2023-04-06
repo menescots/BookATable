@@ -9,7 +9,7 @@ import SwiftUI
 // kazda restauracja ma swoje menu, swoje kategorie!
 
 struct MenuView: View {
-    @State private var choosenCategory = ""
+    @State private var choosenCategory = "Pasta"
     var dishes: [MenuModel] = [
         MenuModel(dishName: "pasta", dishDesc: "it is a very gut focaccia pikante", ingredients: "parmigiano reggiano, peperoncino, rucola", price: 39, dishCategory: "Pasta"),
         MenuModel(dishName: "starterro", dishDesc: "very gut brusketta italiano", ingredients: "parmigiano reggiano, peperoncino, rucola", price: 27, dishCategory: "Starters"),
@@ -51,12 +51,10 @@ struct MenuView: View {
             }
             .padding(.horizontal, 10)
             
-            ForEach(dishes) { dish in
-                if dish.dishCategory == choosenCategory {
+            ForEach(dishes.filter{ $0.dishCategory == choosenCategory}) { dish in
                     MenuDishCell(dishName: dish.dishName, dishIngredients: dish.ingredients, dishPrice: dish.price)
                     Divider()
                         .overlay(Color(.lightGray))
-                }
             }
         }
             .frame(width: UIScreen.main.bounds.width)

@@ -19,19 +19,19 @@ struct RestaurantDetailView: View {
                             Image("thai")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(minHeight: 240)
+                                .frame(minHeight: 200)
                         
                     }
                 }
                 VStack{
                     Capsule()
-                        .foregroundColor(Color(.systemGray4))
+                        .foregroundColor(.white)
                         .frame(width: 48, height: 6)
                         .padding(.top, 5)
                     
                     VStack() {
                         Text("RAGU")
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("Pink"))
                             .frame(minWidth: UIScreen.main.bounds.width, alignment: .leading)
                             .font(.custom("AvenirNext-Regular", fixedSize: 40))
                             .fontWeight(.medium)
@@ -79,6 +79,7 @@ struct RestaurantDetailView: View {
                         InfoView()
                     case .contact:
                         ContactView()
+                            .padding(.horizontal)
                     }
                     Spacer()
                 }
@@ -97,13 +98,14 @@ struct RestaurantDetailView: View {
                             .font(.system(size: 24, weight: .regular))
                     }
                     .frame(width: UIScreen.main.bounds.width - 40, height: 50)
-                    .background(Color("LightViolet"))
+                    .background(Color("Pink"))
                     .cornerRadius(25)
                 }
                 .padding(.top, 10)
             }
             .frame(minWidth: UIScreen.main.bounds.width)
-            .background(Color("DarkBlue"))
+            .background(Color("DarkBlue2"))
+            .shadow(radius: 3)
                 
         }
         .background(Color("DarkBlue"))
