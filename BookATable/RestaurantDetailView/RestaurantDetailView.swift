@@ -31,7 +31,7 @@ struct RestaurantDetailView: View {
                     
                     VStack() {
                         Text("RAGU")
-                            .foregroundColor(Color("Pink"))
+                            .foregroundColor(Color(.white))
                             .frame(minWidth: UIScreen.main.bounds.width, alignment: .leading)
                             .font(.custom("AvenirNext-Regular", fixedSize: 40))
                             .fontWeight(.medium)

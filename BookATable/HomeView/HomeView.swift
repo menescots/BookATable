@@ -13,7 +13,7 @@ struct HomeView: View {
             NavigationStack {
                 ScrollView() {
                     
-                    SearchHeaderView()
+                    SearchHeaderView(cityName: "City")
                     
                     Text("Popular restaurants")
                         .foregroundColor(Color("DarkBlue"))

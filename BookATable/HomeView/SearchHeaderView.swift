@@ -12,6 +12,7 @@ struct SearchHeaderView: View {
     @State private var reservationDate = Date()
     @State private var numberOfPeople: Int = 1
     @State private var restaurantName: String = ""
+     @State var cityName: String
     var body: some View {
         VStack(spacing: 10) {
             
@@ -22,23 +23,24 @@ struct SearchHeaderView: View {
                 .padding(.bottom, 15)
                 .padding(.top, 72)
             
-            Button(action: {
-                
-            }, label: {
-                Text("City")
+            
+            NavigationLink() {
+                CityPickerView(changeCityButtonTitle: self.changeCityButtonTitle(city:))
+            } label: {
+                Text(cityName)
                 Image(systemName: "mappin.and.ellipse")
                     .resizable()
                     .frame(width: 20, height: 15)
                     .foregroundColor(.black)
-            })
-            .frame(maxWidth: .infinity, maxHeight: 10)
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 20).fill(Color.white))
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(lineWidth: 1))
-            .foregroundColor(.black)
-            .padding(.horizontal, 30)
+            }.frame(maxWidth: .infinity, maxHeight: 10)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 20).fill(Color.white))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(lineWidth: 1))
+                .foregroundColor(.black)
+                .padding(.horizontal, 30)
+
             
             HStack {
                 Button(action: {
@@ -105,10 +107,15 @@ struct SearchHeaderView: View {
         .background(Color("DarkBlue"))
         .cornerRadius(20)
     }
+    
+     func changeCityButtonTitle(city: String) {
+        print(city)
+         self.cityName = city
+    }
 }
 
 struct SearchHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchHeaderView()
+        SearchHeaderView(cityName: "City")
     }
 }
