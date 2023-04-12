@@ -15,6 +15,7 @@ struct HomeView: View {
                     
                     SearchHeaderView(cityName: "City")
                     
+                    
                     Text("Popular restaurants")
                         .foregroundColor(Color("DarkBlue"))
                         .font(.custom("AvenirNext-Regular", fixedSize: 25))

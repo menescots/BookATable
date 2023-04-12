@@ -9,10 +9,11 @@ import SwiftUI
 
 struct SearchHeaderView: View {
     @State private var city: String = ""
-    @State private var reservationDate = Date()
+    @State private var reservationDate = "Date"
     @State private var numberOfPeople: Int = 1
     @State private var restaurantName: String = ""
-     @State var cityName: String
+    @State private var showingOptions = false
+    @State var cityName: String
     var body: some View {
         VStack(spacing: 10) {
             
@@ -43,15 +44,15 @@ struct SearchHeaderView: View {
 
             
             HStack {
-                Button(action: {
-                    
-                }, label: {
-                    Text("Date")
+                NavigationLink() {
+                    DatePickerView(changeDate: self.changeDate(date:))
+                } label: {
+                    Text("\(reservationDate)")
                     Image(systemName: "calendar")
                         .resizable()
                         .frame(width: 20, height: 15)
                         .foregroundColor(.black)
-                })
+                }
                 .frame(maxWidth: .infinity, maxHeight: 10)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 20).fill(Color.white))
@@ -62,9 +63,9 @@ struct SearchHeaderView: View {
                 .padding(.leading, 30)
                 
                 Button(action: {
-                    
+                    showingOptions = true
                 }, label: {
-                    Text("People")
+                    Text("\(numberOfPeople)")
                     Image(systemName: "person.2.fill")
                         .resizable()
                         .frame(width: 20, height: 15)
@@ -78,6 +79,14 @@ struct SearchHeaderView: View {
                         .stroke(lineWidth: 1))
                 .foregroundColor(.black)
                 .padding(.trailing, 30)
+                
+                .confirmationDialog("Number of people", isPresented: $showingOptions) {
+                    ForEach(2..<25) { number in
+                        Button("\(number)") {
+                            numberOfPeople = number
+                        }
+                    }
+                }
             }
             .padding(.bottom, 20)
             HStack{
@@ -112,6 +121,14 @@ struct SearchHeaderView: View {
         print(city)
          self.cityName = city
     }
+    
+    func changeDate(date: Date) {
+       print(date)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM hh:mm"
+        
+        self.reservationDate = formatter.string(from: date)
+   }
 }
 
 struct SearchHeaderView_Previews: PreviewProvider {
