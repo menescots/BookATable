@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct SearchHeaderView: View {
-    @State private var city: String = ""
-    @State private var reservationDate = "Date"
-    @State private var numberOfPeople: Int = 1
+    @Binding var reservationDate: String 
+    @Binding var numberOfPeople: Int
     @State private var restaurantName: String = ""
     @State private var showingOptions = false
-    @State var cityName: String
+    @Binding var cityName: String
     var body: some View {
         VStack(spacing: 10) {
             
@@ -113,8 +112,11 @@ struct SearchHeaderView: View {
             .frame(maxWidth: .infinity)
             .padding(.bottom, 20)
         }
-        .background(Color("DarkBlue"))
+        .background(
+                LinearGradient(gradient: Gradient(colors: [Color("DarkBlue"), Color("LightViolet")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
         .cornerRadius(20)
+        .shadow(radius: 7)
     }
     
      func changeCityButtonTitle(city: String) {
@@ -127,12 +129,12 @@ struct SearchHeaderView: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM hh:mm"
         
-        self.reservationDate = formatter.string(from: date)
+       self.reservationDate = formatter.string(from: date)
    }
 }
 
 struct SearchHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchHeaderView(cityName: "City")
+        SearchHeaderView(reservationDate: .constant(""), numberOfPeople: .constant(2), cityName: .constant(""))
     }
 }

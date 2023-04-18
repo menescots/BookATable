@@ -37,7 +37,7 @@ struct DatePickerView: View {
                                 .foregroundColor(.white)
                                 .font(.system(size: 24, weight: .regular))
                         }
-                        .frame(width: UIScreen.main.bounds.width - 40, height: 50)
+                        .frame(width: UIScreen.main.bounds.width - 40, height: 44)
                         .background(Color("DarkBlue"))
                         .cornerRadius(25)
                     }

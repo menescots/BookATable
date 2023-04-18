@@ -9,8 +9,11 @@ import SwiftUI
 
 struct RestaurantDetailView: View {
     var buttonOptions = ["Menu", "Info", "Contact"]
+    @State var numberOfPeople: Int
+    @State var cityName: String
+    @State var reservationDate: String
+    @State var restaurantName: String
     @State private var buttonState = MenuButtonState.menu
-    
     var body: some View {
         VStack{
             ScrollView(showsIndicators: false) {
@@ -19,15 +22,11 @@ struct RestaurantDetailView: View {
                             Image("thai")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(minHeight: 200)
+                                .frame(minHeight: 300)
                         
                     }
-                }
+                }.frame(height: 200)
                 VStack{
-                    Capsule()
-                        .foregroundColor(.white)
-                        .frame(width: 48, height: 6)
-                        .padding(.top, 5)
                     
                     VStack() {
                         Text("RAGU")
@@ -36,6 +35,7 @@ struct RestaurantDetailView: View {
                             .font(.custom("AvenirNext-Regular", fixedSize: 40))
                             .fontWeight(.medium)
                             .padding(.leading, 20)
+                            .padding(.vertical)
                         
                         Label("Ogród botaniczny 18/3", systemImage: "mappin.and.ellipse")
                             .foregroundColor(.white)
@@ -83,13 +83,16 @@ struct RestaurantDetailView: View {
                     }
                     Spacer()
                 }
-                .frame(minHeight: UIScreen.main.bounds.height - 200)
-                .background(Color("DarkBlue"))
+                .frame(minHeight: UIScreen.main.bounds.height - 300)
+                
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [Color("DarkBlue").opacity(10), Color("LightViolet").opacity(11)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .clipShape(CustomShape()))
             }
             VStack {
-                Button {
-                    
-                } label: {
+                    NavigationLink() {
+                        ReservationMakingView(numberOfPeople: numberOfPeople, cityName: cityName, reservationDate: reservationDate, restaurantName: restaurantName)
+                    } label: {
                     HStack(alignment: .center) {
                         Image(systemName: "highlighter")
                             .foregroundColor(.white)
@@ -97,24 +100,23 @@ struct RestaurantDetailView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 24, weight: .regular))
                     }
-                    .frame(width: UIScreen.main.bounds.width - 40, height: 50)
-                    .background(Color("Pink"))
+                    .frame(width: UIScreen.main.bounds.width - 50, height: 44)
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [Color("DarkBlue").opacity(10), Color("LightViolet").opacity(11)]), startPoint: .topLeading, endPoint: .bottomTrailing))
                     .cornerRadius(25)
                 }
-                .padding(.top, 10)
             }
             .frame(minWidth: UIScreen.main.bounds.width)
-            .background(Color("DarkBlue2"))
-            .shadow(radius: 3)
+            .background(Color(.white))
                 
         }
-        .background(Color("DarkBlue"))
         }
+    
 }
 
 struct RestaurantDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantDetailView()
+        RestaurantDetailView(numberOfPeople: 2, cityName: "", reservationDate: "", restaurantName: "")
     }
 }
 
@@ -123,7 +125,7 @@ struct StickyHeader<Content: View>: View {
     var minHeight: CGFloat
     var content: Content
     
-    init(minHeight: CGFloat = 200, @ViewBuilder content: () -> Content) {
+    init(minHeight: CGFloat = 300, @ViewBuilder content: () -> Content) {
         self.minHeight = minHeight
         self.content = content()
     }

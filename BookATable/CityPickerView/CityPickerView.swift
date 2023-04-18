@@ -31,15 +31,17 @@ struct CityPickerView: View {
         VStack {
             NavigationStack {
                 List(cities, id: \.self, selection: $selectedCity) { city in
-                    Text(city)
-                        .foregroundColor(.black)
-                        .font(.custom("AvenirNext-Regular", fixedSize: 23))
-                        .fontWeight(.regular)
-                        .padding(.vertical)
-                        .onTapGesture {
-                            self.changeCityButtonTitle(city)
-                            dismiss()
-                        }
+                    Button {
+                        self.changeCityButtonTitle(city)
+                        dismiss()
+                    } label: {
+                        Text(city)
+                            .foregroundColor(.black)
+                            .font(.custom("AvenirNext-Regular", fixedSize: 23))
+                            .fontWeight(.regular)
+                            .padding(.vertical)
+                    }
+                        
                 }
                 .listStyle(.plain)
             }
@@ -54,7 +56,7 @@ struct CityPickerView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 24, weight: .regular))
                     }
-                    .frame(width: UIScreen.main.bounds.width - 40, height: 50)
+                    .frame(width: UIScreen.main.bounds.width - 40, height: 44)
                     .background(Color("DarkBlue"))
                     .cornerRadius(25)
                 }
@@ -62,7 +64,6 @@ struct CityPickerView: View {
             }
             .frame(minWidth: UIScreen.main.bounds.width)
             .background(Color(.white))
-            .shadow(radius: 3)
         }
     }
 }

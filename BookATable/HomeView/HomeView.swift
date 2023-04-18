@@ -9,12 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
     @State var pushView = false
+    @State var numberOfPeople: Int
+    @State var cityName: String
+    @State var reservationDate: String
     var body: some View {
             NavigationStack {
                 ScrollView() {
                     
-                    SearchHeaderView(cityName: "City")
-                    
+                    SearchHeaderView(reservationDate: $reservationDate, numberOfPeople: $numberOfPeople, cityName: $cityName)
                     
                     Text("Popular restaurants")
                         .foregroundColor(Color("DarkBlue"))
@@ -26,7 +28,8 @@ struct HomeView: View {
                     
                     VStack(spacing: 15) {
                         ForEach(0..<10) { restaurant in
-                            NavigationLink(destination: RestaurantDetailView()) {
+                            
+                            NavigationLink(destination: RestaurantDetailView(numberOfPeople: numberOfPeople, cityName: cityName, reservationDate: reservationDate, restaurantName: "RAGU")) {
                                 RestaurantListScrollViewCell(restaurantName: "RAGU", costliness: 2)
                             }
                         }
@@ -34,8 +37,8 @@ struct HomeView: View {
                     .cornerRadius(20)
                     .padding(.bottom, 15)
                 }
-                .navigationBarHidden(true)
                 .ignoresSafeArea()
+                
             }
         }
     }
@@ -43,6 +46,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(numberOfPeople: 2, cityName: "", reservationDate: "")
     }
 }
