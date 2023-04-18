@@ -11,7 +11,8 @@ struct HomeView: View {
     @State var pushView = false
     @State var numberOfPeople: Int
     @State var cityName: String
-    @State var reservationDate: String
+    @State var reservationDate: Date
+    
     var body: some View {
             NavigationStack {
                 ScrollView() {
@@ -46,6 +47,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(numberOfPeople: 2, cityName: "", reservationDate: "")
+        HomeView(numberOfPeople: 2, cityName: "", reservationDate: Date())
     }
 }

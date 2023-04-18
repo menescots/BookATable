@@ -11,7 +11,7 @@ struct RestaurantDetailView: View {
     var buttonOptions = ["Menu", "Info", "Contact"]
     @State var numberOfPeople: Int
     @State var cityName: String
-    @State var reservationDate: String
+    @State var reservationDate: Date
     @State var restaurantName: String
     @State private var buttonState = MenuButtonState.menu
     var body: some View {
@@ -116,7 +116,7 @@ struct RestaurantDetailView: View {
 
 struct RestaurantDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RestaurantDetailView(numberOfPeople: 2, cityName: "", reservationDate: "", restaurantName: "")
+        RestaurantDetailView(numberOfPeople: 2, cityName: "", reservationDate: Date(), restaurantName: "")
     }
 }
 

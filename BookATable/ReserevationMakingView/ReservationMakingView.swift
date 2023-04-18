@@ -10,12 +10,16 @@ import SwiftUI
 struct ReservationMakingView: View {
     @State var numberOfPeople: Int
     @State var cityName: String
-    @State var reservationDate: String
+    @State var reservationDate: Date
     @State var restaurantName: String
-    var date = Date().formatted(Date.FormatStyle()
-        .hour(.defaultDigitsNoAMPM)
-         .minute()
-    )
+    let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM"
+            return formatter
+        }()
+    
+   
+
     var body: some View {
         VStack{
             ScrollView(showsIndicators: false) {
@@ -48,7 +52,7 @@ struct ReservationMakingView: View {
                             .padding(.leading, 20)
                         HStack {
                             Button {
-                                
+                                reservationDate = Calendar.current.date(byAdding: .day, value: -1, to: reservationDate) ?? Date()
                             } label: {
                                 HStack {
                                     Label("Previous", systemImage: "arrow.backward")
@@ -56,19 +60,19 @@ struct ReservationMakingView: View {
                                 }
                             }
                             NavigationLink {
-                                DatePickerView(changeDate: self.changeDate(date: ))
+                                DatePickerView(changeDate: self.changeDate(date: ), date: reservationDate)
                             } label: {
-                                Label("\(Date.now.formatted(date: .numeric, time: .omitted))", systemImage: "calendar")
+                                Label("\(reservationDate, formatter: dateFormatter)", systemImage: "calendar")
                                     .foregroundColor(.black)
                                     .padding()
-                                    .frame(width: 150, height: 40)
+                                    .frame( height: 40)
                             }
                             .background(.white)
                             .cornerRadius(14)
                             .padding(.horizontal)
                             
                             Button {
-                                
+                                reservationDate = Calendar.current.date(byAdding: .day, value: 1, to: reservationDate) ?? Date()
                             } label: {
                                 HStack {
                                     Text("Next")
@@ -80,35 +84,7 @@ struct ReservationMakingView: View {
                     }.padding(.bottom)
                     Divider()
                         .overlay(.white)
-                    // HOUR VIEW
-                    VStack {
-                        Text("Hour")
-                            .font(.system(size: 23, weight: .light, design: .default))
-                            .foregroundColor(.white)
-                            .frame(width: UIScreen.main.bounds.width, alignment: .leading)
-                            .padding(.leading, 20)
-                        HStack {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 15) {
-                                    ForEach(1..<26) { number in
-                                        Button {
-                                            print(number)
-                                        } label: {
-                                            Text("\(number):00")
-                                                .padding(5)
-                                                .foregroundColor(.black)
-                                        }
-                                        .frame(width: 55, height: 40)
-                                        .background(.white)
-                                        .cornerRadius(14)
-                                    }
-                                }
-                            }.padding(.leading, 20)
-                            }
-                        }.padding(.bottom)
-                    
-                    Divider()
-                        .overlay(.white)
+                   
                     //Number of people
                     VStack {
                         Text("Number of people")
@@ -168,16 +144,12 @@ struct ReservationMakingView: View {
         }
     }
     func changeDate(date: Date) {
-       print(date)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM hh:mm"
-        
-       self.reservationDate = formatter.string(from: date)
+       self.reservationDate = date
    }
 }
 
 struct ReservationMakingView_Previews: PreviewProvider {
     static var previews: some View {
-        ReservationMakingView(numberOfPeople: 2, cityName: "", reservationDate: "", restaurantName: "")
+        ReservationMakingView(numberOfPeople: 2, cityName: "", reservationDate: Date(), restaurantName: "")
     }
 }

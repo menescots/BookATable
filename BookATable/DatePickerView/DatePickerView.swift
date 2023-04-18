@@ -10,19 +10,17 @@ import SwiftUI
 struct DatePickerView: View {
         @Environment(\.dismiss) private var dismiss
         var changeDate: (Date) -> Void
-        @State private var date = Date()
+        @State var date: Date
             var body: some View {
                 DatePicker(
                     "Pick a date",
                     selection: $date,
                     in: Date()...,
-                    displayedComponents: [.date, .hourAndMinute])
+                    displayedComponents: [.date])
                     .padding()
                     .datePickerStyle(.graphical)
                     .accentColor(Color("DarkBlue"))
-                    .onAppear {
-                        UIDatePicker.appearance().minuteInterval = 30
-                    }
+                
                 Spacer()
                 
                 VStack {
@@ -51,6 +49,6 @@ struct DatePickerView: View {
 
 struct DatePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        DatePickerView(changeDate: { _ in})
+        DatePickerView(changeDate: { _ in}, date: Date())
     }
 }

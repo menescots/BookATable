@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct SearchHeaderView: View {
-    @Binding var reservationDate: String 
+    @Binding var reservationDate: Date
     @Binding var numberOfPeople: Int
     @State private var restaurantName: String = ""
     @State private var showingOptions = false
     @Binding var cityName: String
+    
+    let formatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM hh:mm"
+            return formatter
+        }()
+    
     var body: some View {
         VStack(spacing: 10) {
             
@@ -44,9 +51,9 @@ struct SearchHeaderView: View {
             
             HStack {
                 NavigationLink() {
-                    DatePickerView(changeDate: self.changeDate(date:))
+                    DatePickerView(changeDate: self.changeDate(date:), date: reservationDate)
                 } label: {
-                    Text("\(reservationDate)")
+                    Text("\(reservationDate, formatter: formatter)")
                     Image(systemName: "calendar")
                         .resizable()
                         .frame(width: 20, height: 15)
@@ -126,15 +133,12 @@ struct SearchHeaderView: View {
     
     func changeDate(date: Date) {
        print(date)
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM hh:mm"
-        
-       self.reservationDate = formatter.string(from: date)
+        self.reservationDate = date
    }
 }
 
 struct SearchHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchHeaderView(reservationDate: .constant(""), numberOfPeople: .constant(2), cityName: .constant(""))
+        SearchHeaderView(reservationDate: .constant(Date()), numberOfPeople: .constant(2), cityName: .constant(""))
     }
 }
