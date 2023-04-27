@@ -16,11 +16,13 @@ struct DatePickerView: View {
                     "Pick a date",
                     selection: $date,
                     in: Date()...,
-                    displayedComponents: [.date])
+                    displayedComponents: [.date, .hourAndMinute])
                     .padding()
                     .datePickerStyle(.graphical)
                     .accentColor(Color("DarkBlue"))
-                
+                    .onAppear {
+                        UIDatePicker.appearance().minuteInterval = 15
+                    }
                 Spacer()
                 
                 VStack {

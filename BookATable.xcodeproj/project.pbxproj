@@ -31,6 +31,8 @@
 		7ED001BE29E6BBA1003A3164 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED001BD29E6BBA1003A3164 /* UserView.swift */; };
 		7EE5993029E8039800A6C2A8 /* ReservationMakingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE5992F29E8039800A6C2A8 /* ReservationMakingView.swift */; };
 		7EE5993329ED435C00A6C2A8 /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE5993229ED435C00A6C2A8 /* CustomShape.swift */; };
+		7EF73B2E29FA7B3D00EC0204 /* ReservationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF73B2D29FA7B3D00EC0204 /* ReservationState.swift */; };
+		7EF73B3029FA8E8800EC0204 /* ReservationSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF73B2F29FA8E8800EC0204 /* ReservationSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		7ED001BD29E6BBA1003A3164 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		7EE5992F29E8039800A6C2A8 /* ReservationMakingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationMakingView.swift; sourceTree = "<group>"; };
 		7EE5993229ED435C00A6C2A8 /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
+		7EF73B2D29FA7B3D00EC0204 /* ReservationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationState.swift; sourceTree = "<group>"; };
+		7EF73B2F29FA8E8800EC0204 /* ReservationSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				7EE5992F29E8039800A6C2A8 /* ReservationMakingView.swift */,
+				7EF73B2D29FA7B3D00EC0204 /* ReservationState.swift */,
+				7EF73B2F29FA8E8800EC0204 /* ReservationSummary.swift */,
 			);
 			path = ReserevationMakingView;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				7E61D4B029EE79AD0027F3AB /* ReservationModel.swift in Sources */,
 				7EB7ADB229DDA535005A6C34 /* MenuDishCell.swift in Sources */,
 				7E103BD729DD89FA002ED892 /* MenuModel.swift in Sources */,
+				7EF73B3029FA8E8800EC0204 /* ReservationSummary.swift in Sources */,
 				7E3685E329D4586100C0B267 /* RestaurantDetailView.swift in Sources */,
 				7ED001BC29E6BB93003A3164 /* ReservationsView.swift in Sources */,
 				7E45B7E029DEE0E400ACF118 /* CityPickerView.swift in Sources */,
@@ -412,6 +419,7 @@
 				7E2157E529D2DCB7003B021A /* HomeView.swift in Sources */,
 				7E45B7E229E596EA00ACF118 /* DatePickerView.swift in Sources */,
 				7E2157E729D2E01C003B021A /* SearchHeaderView.swift in Sources */,
+				7EF73B2E29FA7B3D00EC0204 /* ReservationState.swift in Sources */,
 				7EE5993029E8039800A6C2A8 /* ReservationMakingView.swift in Sources */,
 				7E9701B029DD7CFB0082D701 /* InfoView.swift in Sources */,
 				7E103BD529DD8163002ED892 /* MenuButtonState.swift in Sources */,

@@ -14,6 +14,7 @@ struct RestaurantDetailView: View {
     @State var reservationDate: Date
     @State var restaurantName: String
     @State private var buttonState = MenuButtonState.menu
+    
     var body: some View {
         VStack{
             ScrollView(showsIndicators: false) {
