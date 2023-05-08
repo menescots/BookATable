@@ -119,11 +119,16 @@ struct ReservationMakingView: View {
                                 .padding(.leading, 20)
                             
                             
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack(spacing: 15) {
-                                        numberOfPeopleButtons(selection: $numberOfPeople)
-                                    }
-                                }.padding(.leading, 20)
+                            ScrollViewReader { proxy in
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        HStack(spacing: 15) {
+                                            numberOfPeopleButtons(selection: $numberOfPeople)
+                                                
+                                            
+                                            
+                                        }
+                                    }.padding(.leading, 20)
+                                }
                             }.padding(.bottom)
                         
                         Divider()
@@ -165,11 +170,11 @@ struct ReservationMakingView: View {
                 .clipShape(CustomShape())
             }
             VStack {
-                NavigationLink() {
-                    
+                Button {
+                    buttonState = .summary
                 } label: {
                     HStack(alignment: .center) {
-                        Text("Next")
+                        Text(self.buttonState == .detail ? "Next" : "Make reservation")
                             .foregroundColor(.white)
                             .font(.system(size: 24, weight: .regular))
                     }
@@ -213,6 +218,7 @@ struct numberOfPeopleButtons: View {
         HStack {
             ForEach(1..<26) { number in
                 numberOfPeopleButton(id: number, currentlySelectedNumber: $currentlySelectedNumber, title: number)
+                    .id(number)
             }
         }
     }
