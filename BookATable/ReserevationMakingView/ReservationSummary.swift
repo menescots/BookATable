@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct ReservationSummary: View {
+    @EnvironmentObject var vm: UserStateViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if (vm.isLoggedIn) {
+            Text("logged")
+        } else {
+            Text("not logged")
+        }
     }
 }
 

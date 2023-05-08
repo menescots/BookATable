@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BookATableApp: App {
+    @StateObject var userState =  UserStateViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(userState)
         }
     }
 }

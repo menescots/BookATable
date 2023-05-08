@@ -123,11 +123,12 @@ struct ReservationMakingView: View {
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(spacing: 15) {
                                             numberOfPeopleButtons(selection: $numberOfPeople)
-                                                
-                                            
                                             
                                         }
                                     }.padding(.leading, 20)
+                                    .onAppear {
+                                        proxy.scrollTo(numberOfPeople)
+                                    }
                                 }
                             }.padding(.bottom)
                         
@@ -188,6 +189,7 @@ struct ReservationMakingView: View {
             .background(Color(.white))
         }
     }
+    
     func changeDate(date: Date) {
        self.reservationDate = date
    }
