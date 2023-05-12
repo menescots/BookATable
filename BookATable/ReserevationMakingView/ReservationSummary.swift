@@ -11,10 +11,10 @@ struct ReservationSummary: View {
     @EnvironmentObject var vm: UserStateViewModel
     
     var body: some View {
-        if (vm.isLoggedIn) {
-            Text("logged")
+        if (vm.userLoginState == .loggedIn) {
+            SignInView()
         } else {
-            Text("not logged")
+            SignUpView()
         }
     }
 }

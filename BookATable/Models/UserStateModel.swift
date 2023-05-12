@@ -11,17 +11,20 @@ enum UserStateError: Error{
     case signInError, signOutError
 }
 
+enum UserLoginState {
+    case loggedIn, notLogged, continueWithoutAccount
+}
 @MainActor
 class UserStateViewModel: ObservableObject {
     
-    @Published var isLoggedIn = false
+    @Published var userLoginState = UserLoginState.notLogged
     @Published var isBusy = false
     
     func signIn(email: String, password: String) async -> Result<Bool, UserStateError>  {
         isBusy = true
         do{
             try await Task.sleep(nanoseconds:  1_000_000_000)
-            isLoggedIn = true
+            userLoginState = UserLoginState.loggedIn
             isBusy = false
             return .success(true)
         }catch{
@@ -34,7 +37,7 @@ class UserStateViewModel: ObservableObject {
         isBusy = true
         do{
             try await Task.sleep(nanoseconds: 1_000_000_000)
-            isLoggedIn = false
+            userLoginState = UserLoginState.notLogged
             isBusy = false
             return .success(true)
         }catch{
