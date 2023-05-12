@@ -12,11 +12,9 @@ struct HomeView: View {
     @State var numberOfPeople: Int
     @State var cityName: String
     @State var reservationDate: Date
-    
     var body: some View {
             NavigationStack {
                 ScrollView() {
-                    
                     SearchHeaderView(reservationDate: $reservationDate, numberOfPeople: $numberOfPeople, cityName: $cityName)
                     
                     Text("Popular restaurants")
@@ -39,9 +37,8 @@ struct HomeView: View {
                     .padding(.bottom, 15)
                 }
                 .ignoresSafeArea()
-                
             }
-        }
+    }
     }
 
 

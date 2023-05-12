@@ -9,14 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var vm: UserStateViewModel
+    @State var isMainLoginPresented = true
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
         UITabBar.appearance().scrollEdgeAppearance = .none
     }
     var body: some View {
-        if vm.userLoginState == .loggedIn || vm.userLoginState == .continueWithoutAccount {
-            TabView {
+        
+        if isMainLoginPresented {
+            MainLoginView(isMainLoginPresented: $isMainLoginPresented)
+        } else {
+            TabView{
                 HomeView(numberOfPeople: 2, cityName: "Choose City", reservationDate: Date())
                     .tabItem {
                         Label("Home", systemImage: "house")
@@ -34,12 +38,10 @@ struct ContentView: View {
             }
             .tint(Color("DarkBlue"))
             .transition(.slide)
-        } else {
-            MainLoginView()
+        }
+        }
         
     }
-}
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -11,7 +11,7 @@ struct ReservationSummary: View {
     @EnvironmentObject var vm: UserStateViewModel
     
     var body: some View {
-        if (vm.userLoginState == .loggedIn) {
+        if (vm.isLogged) {
             SignInView()
         } else {
             SignUpView()
