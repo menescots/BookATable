@@ -13,7 +13,7 @@ enum UserStateError: Error{
 
 @MainActor
 class UserStateViewModel: ObservableObject {
-    
+    @Published var isMainLoginViewPresented = true
     @Published var isLogged = false
     @Published var isBusy = false
     

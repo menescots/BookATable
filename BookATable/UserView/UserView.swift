@@ -6,10 +6,30 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct UserView: View {
+    @EnvironmentObject var vm: UserStateViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            vm.isLogged = false
+        } label: {
+            HStack(alignment: .center) {
+                Text(vm.isLogged ? "Logout" : "")
+                    .foregroundColor(.white)
+                    .font(.system(size: 24, weight: .light))
+            }
+            .frame(width: UIScreen.main.bounds.width - 130 , height: 44)
+            .background(Color("DarkBlue"))
+            .cornerRadius(25)
+        }
+    }
+    func logOutFromFirebase() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+        print("Cannot sign out")
+        }
     }
 }
 

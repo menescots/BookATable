@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var vm: UserStateViewModel
-    @State var isMainLoginPresented = true
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
@@ -17,8 +16,8 @@ struct ContentView: View {
     }
     var body: some View {
         
-        if isMainLoginPresented {
-            MainLoginView(isMainLoginPresented: $isMainLoginPresented)
+        if vm.isMainLoginViewPresented {
+            MainLoginView()
         } else {
             TabView{
                 HomeView(numberOfPeople: 2, cityName: "Choose City", reservationDate: Date())

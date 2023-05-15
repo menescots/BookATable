@@ -119,9 +119,7 @@ struct SearchHeaderView: View {
             .frame(maxWidth: .infinity)
             .padding(.bottom, 20)
         }
-        .background(
-                LinearGradient(gradient: Gradient(colors: [Color("DarkBlue"), Color("LightViolet")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-            )
+        .background(Color("DarkBlue"))
         .cornerRadius(20)
         .shadow(radius: 7)
     }

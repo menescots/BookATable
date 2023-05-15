@@ -10,7 +10,6 @@ import SwiftUI
 struct MainLoginView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var vm: UserStateViewModel
-    @Binding var isMainLoginPresented: Bool
     var body: some View {
         NavigationStack {
             VStack() {
@@ -72,7 +71,7 @@ struct MainLoginView: View {
                 VStack {
                     Button {
                         withAnimation() {
-                            isMainLoginPresented.toggle()
+                            vm.isMainLoginViewPresented.toggle()
                         }
                     } label: {
                         HStack(alignment: .center) {
@@ -96,6 +95,6 @@ struct MainLoginView: View {
 
 struct MainLoginView_Previews: PreviewProvider {
     static var previews: some View {
-        MainLoginView(isMainLoginPresented: .constant(true))
+        MainLoginView()
     }
 }
