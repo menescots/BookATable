@@ -9,19 +9,50 @@ import SwiftUI
 import Firebase
 
 struct UserView: View {
+    var isLogged = UserDefaultsManager.shared.isLoggedIn()
     @EnvironmentObject var vm: UserStateViewModel
     var body: some View {
-        Button {
-            vm.isLogged = false
-        } label: {
-            HStack(alignment: .center) {
-                Text(vm.isLogged ? "Logout" : "")
-                    .foregroundColor(.white)
-                    .font(.system(size: 24, weight: .light))
+        NavigationStack{
+            VStack {
+                Spacer()
+                ZStack {
+                    Button {
+                        vm.isLogged = false
+                        UserDefaultsManager.shared.saveLoggedInState(false)
+                        print("clicked")
+                    } label: {
+                        HStack(alignment: .center) {
+                            Text(isLogged ? "Logout" : "")
+                                .foregroundColor(.white)
+                                .font(.system(size: 24, weight: .light))
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 130 , height: 44)
+                        .background(Color("DarkBlue"))
+                        .cornerRadius(25)
+                    }
+                    .padding(.bottom, 10)
+                    .opacity(isLogged ? 1 : 0)
+                    .disabled(isLogged ? false : true)
+                    
+                    Button {
+                        withAnimation(.some(.easeIn)){
+                            vm.isMainLoginViewPresented = true
+                        }
+                    } label: {
+                        HStack(alignment: .center) {
+                            Text(isLogged ? "" : "SignUp / SignIn")
+                                .foregroundColor(.white)
+                                .font(.system(size: 24, weight: .light))
+                        }
+                        .frame(width: UIScreen.main.bounds.width - 130 , height: 44)
+                        .background(Color("DarkBlue"))
+                        .cornerRadius(25)
+                    }
+                    .opacity(isLogged ? 0 : 1)
+                    .padding(.bottom, 10)
+
+                }
             }
-            .frame(width: UIScreen.main.bounds.width - 130 , height: 44)
-            .background(Color("DarkBlue"))
-            .cornerRadius(25)
         }
     }
     func logOutFromFirebase() {
@@ -35,6 +66,6 @@ struct UserView: View {
 
 struct UserView_Previews: PreviewProvider {
     static var previews: some View {
-        UserView()
+        UserView().environmentObject(UserStateViewModel())
     }
 }

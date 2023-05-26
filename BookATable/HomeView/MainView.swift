@@ -19,24 +19,24 @@ struct ContentView: View {
         if vm.isMainLoginViewPresented {
             MainLoginView()
         } else {
-            TabView{
-                HomeView(numberOfPeople: 2, cityName: "Choose City", reservationDate: Date())
-                    .tabItem {
-                        Label("Home", systemImage: "house")
-                    }
-                
-                ReservationsView()
-                    .tabItem {
-                        Label("Reservations", systemImage: "pencil.line")
-                    }
-                
-                UserView()
-                    .tabItem {
-                        Label("Profile", systemImage: "person")
-                    }
-            }
-            .tint(Color("DarkBlue"))
-            .transition(.slide)
+                TabView{
+                    HomeView(numberOfPeople: 2, cityName: "Choose City", reservationDate: Date())
+                        .tabItem {
+                            Label("Home", systemImage: "house")
+                        }
+                    
+                    ReservationsView()
+                        .tabItem {
+                            Label("Reservations", systemImage: "pencil.line")
+                        }
+                    
+                    UserView()
+                        .tabItem {
+                            Label("Profile", systemImage: "person")
+                        }
+                }
+                .tint(Color("DarkBlue"))
+                .transition(.slide)
         }
         }
         

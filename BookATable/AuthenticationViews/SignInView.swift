@@ -83,8 +83,9 @@ struct SignInView: View, SecuredTextFieldParentProtocol {
             if error != nil {
                 print(error?.localizedDescription ?? "")
             } else {
-                print("signed in ")
                 vm.isLogged = true
+                UserDefaultsManager.shared.saveLoggedInState(true)
+                print(UserDefaultsManager.shared.isLoggedIn())
                 withAnimation() {
                     vm.isMainLoginViewPresented = false
                 }
