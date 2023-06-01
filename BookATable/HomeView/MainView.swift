@@ -15,8 +15,7 @@ struct ContentView: View {
         UITabBar.appearance().scrollEdgeAppearance = .none
     }
     var body: some View {
-        
-        if vm.isMainLoginViewPresented {
+        if vm.isMainLoginViewPresented && !UserDefaultsManager.shared.isLoggedIn() {
             MainLoginView()
         } else {
                 TabView{
@@ -38,9 +37,11 @@ struct ContentView: View {
                 .tint(Color("DarkBlue"))
                 .transition(.slide)
         }
-        }
-        
     }
+    private func changeVisibilityOfLoginView() {
+        vm.isMainLoginViewPresented.toggle()
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

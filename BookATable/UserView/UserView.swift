@@ -13,13 +13,20 @@ struct UserView: View {
     @EnvironmentObject var vm: UserStateViewModel
     var body: some View {
         NavigationStack{
-            VStack {
+            Spacer()
+            VStack(alignment: .leading) {
+                //reload on logout
+                Text("Hi \(UserDefaultsManager.shared.returnUsername())")
+                    .foregroundColor(.black)
+                    .font(.custom("cochin", fixedSize: 30))
+                    .fontWeight(.medium)
+                    .padding(.top, 20)
                 Spacer()
                 ZStack {
                     Button {
                         vm.isLogged = false
                         UserDefaultsManager.shared.saveLoggedInState(false)
-                        print("clicked")
+                        UserDefaultsManager.shared.removeEmailValue()
                     } label: {
                         HStack(alignment: .center) {
                             Text(isLogged ? "Logout" : "")

@@ -104,6 +104,8 @@ struct SignUpView: View, SecuredTextFieldParentProtocol {
                 print(error?.localizedDescription ?? "")
             } else {
                 vm.isLogged = true
+                UserDefaultsManager.shared.saveLoggedInState(true)
+                UserDefaultsManager.shared.saveUserEmail(email)
                 withAnimation() {
                     vm.isMainLoginViewPresented = false
                 }
