@@ -43,6 +43,8 @@
 		7EE5993029E8039800A6C2A8 /* ReservationMakingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE5992F29E8039800A6C2A8 /* ReservationMakingView.swift */; };
 		7EE5993329ED435C00A6C2A8 /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE5993229ED435C00A6C2A8 /* CustomShape.swift */; };
 		7EF1D2FD2A28C59B009143BF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF1D2FC2A28C59B009143BF /* CustomTextField.swift */; };
+		7EF1D3012A39BA38009143BF /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF1D3002A39BA38009143BF /* UserModel.swift */; };
+		7EF1D3032A39BA71009143BF /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF1D3022A39BA71009143BF /* FirebaseManager.swift */; };
 		7EF73B2E29FA7B3D00EC0204 /* ReservationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF73B2D29FA7B3D00EC0204 /* ReservationState.swift */; };
 		7EF73B3029FA8E8800EC0204 /* ReservationSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF73B2F29FA8E8800EC0204 /* ReservationSummary.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +103,8 @@
 		7EE5992F29E8039800A6C2A8 /* ReservationMakingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationMakingView.swift; sourceTree = "<group>"; };
 		7EE5993229ED435C00A6C2A8 /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
 		7EF1D2FC2A28C59B009143BF /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		7EF1D3002A39BA38009143BF /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		7EF1D3022A39BA71009143BF /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		7EF73B2D29FA7B3D00EC0204 /* ReservationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationState.swift; sourceTree = "<group>"; };
 		7EF73B2F29FA8E8800EC0204 /* ReservationSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +160,7 @@
 		7E2157B729D2CF56003B021A /* BookATable */ = {
 			isa = PBXGroup;
 			children = (
+				7EF1D2FF2A39BA0E009143BF /* FirebaseManager */,
 				7E355E912A20BC5800EFC2E2 /* UserDefaultsManager */,
 				7E40109B2A09331400A0EDD0 /* AuthenticationViews */,
 				7E61D4AE29EE79950027F3AB /* Models */,
@@ -321,6 +326,15 @@
 			path = CustomView;
 			sourceTree = "<group>";
 		};
+		7EF1D2FF2A39BA0E009143BF /* FirebaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				7EF1D3002A39BA38009143BF /* UserModel.swift */,
+				7EF1D3022A39BA71009143BF /* FirebaseManager.swift */,
+			);
+			name = FirebaseManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -469,6 +483,7 @@
 				7ED001BE29E6BBA1003A3164 /* UserView.swift in Sources */,
 				7E40109D2A09338100A0EDD0 /* SignUpView.swift in Sources */,
 				7E4010A82A0E2EF900A0EDD0 /* SignInView.swift in Sources */,
+				7EF1D3032A39BA71009143BF /* FirebaseManager.swift in Sources */,
 				7E61D4B029EE79AD0027F3AB /* ReservationModel.swift in Sources */,
 				7E355E8C2A126FDD00EFC2E2 /* SecurityField.swift in Sources */,
 				7E355E932A20BC6C00EFC2E2 /* UserDefaultsManager.swift in Sources */,
@@ -488,6 +503,7 @@
 				7E4010AC2A0E32CD00A0EDD0 /* MainLoginView.swift in Sources */,
 				7EE5993029E8039800A6C2A8 /* ReservationMakingView.swift in Sources */,
 				7E9701B029DD7CFB0082D701 /* InfoView.swift in Sources */,
+				7EF1D3012A39BA38009143BF /* UserModel.swift in Sources */,
 				7E103BD529DD8163002ED892 /* MenuButtonState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

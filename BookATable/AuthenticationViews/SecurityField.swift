@@ -47,6 +47,7 @@ struct SecuredTextFieldView: View {
     /// Also this is a struct and structs are value type.
     @State var parent: SecuredTextFieldParentProtocol
 
+    @State var placeholder: String
     var body: some View {
         VStack {
             ZStack(alignment: .trailing) {
@@ -68,7 +69,7 @@ struct SecuredTextFieldView: View {
     /// Secured field with the show / hide capability.
     var securedTextField: some View {
         Group {
-            SecureField("Enter Text", text: $text)
+            SecureField(placeholder, text: $text)
                 .textInputAutocapitalization(.never)
                 .keyboardType(.asciiCapable) // This avoids suggestions bar on the keyboard.
                 .autocorrectionDisabled(true)
@@ -76,7 +77,7 @@ struct SecuredTextFieldView: View {
                 .opacity(hidePasswordFieldOpacity.rawValue)
                 .textContentType(.newPassword)
 
-            TextField("Enter Text", text: $text)
+            TextField(placeholder, text: $text)
                 .textInputAutocapitalization(.never)
                 .keyboardType(.asciiCapable)
                 .autocorrectionDisabled(true)
