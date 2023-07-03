@@ -12,7 +12,8 @@ struct ReservationMakingView: View {
     @State var cityName: String
     @State var reservationDate: Date
     @State var restaurantName: String
-    
+    @State private var email: String = ""
+    @State private var password: String = ""
     let dateFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd.MM hh:mm"
@@ -162,7 +163,7 @@ struct ReservationMakingView: View {
                                 }.padding(.leading, 20)
                             }.padding(.bottom)
                     case .summary:
-                        ReservationSummary()
+                        ReservationSummary(email: $email, password: $password)
                     }
                     Spacer()
                 }
@@ -174,9 +175,7 @@ struct ReservationMakingView: View {
             VStack {
                 Button {
                     buttonState = .summary
-                    if buttonState == .summary && !UserDefaultsManager.shared.isLoggedIn() {
-                        createUserAndSaveData()
-                    }
+                    
                 } label: {
                     HStack(alignment: .center) {
                         Text(self.buttonState == .detail ? "Next" : "Make reservation")
@@ -198,7 +197,7 @@ struct ReservationMakingView: View {
             if let user = authResult?.user {
                 let userId = user.uid
                 let userData = ["email": email, "phone": nil]
-                
+
                 FirebaseManager.shared.saveUserData(userId: userId, userData: userData as [String : Any]) { (error) in
                     if let error = error {
                         print("Error saving user data: \(error.localizedDescription)")

@@ -32,8 +32,8 @@ struct FirebaseManager {
                 print(error?.localizedDescription ?? "")
             } else {
                 UserDefaultsManager.shared.saveLoggedInState(true)
+                print(UserDefaultsManager.shared.isLoggedIn())
                 UserDefaultsManager.shared.saveUserEmail(email)
-                
             }
         }
     }

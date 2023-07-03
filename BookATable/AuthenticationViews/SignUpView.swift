@@ -74,8 +74,7 @@ struct SignUpView: View, SecuredTextFieldParentProtocol {
                     }
                     
                     createUserAndSaveData()
-                    vm.isMainLoginViewPresented = false
-                    vm.isLogged = true
+                    
                 } label: {
                     HStack(alignment: .center) {
                         Text("Sign up")
@@ -110,9 +109,14 @@ struct SignUpView: View, SecuredTextFieldParentProtocol {
                     if let error = error {
                         print("Error saving user data: \(error.localizedDescription)")
                     } else {
+                        print("halo tutaj powinno zalogowac")
+                        FirebaseManager.shared.signIntoFirebase(email: email, password: password)
+                        vm.isMainLoginViewPresented = false
+                        vm.isLogged = true
                         print("User data saved successfully")
                     }
                 }
+                
             } else if let error = error {
                 print("Error creating user: \(error.localizedDescription)")
             }

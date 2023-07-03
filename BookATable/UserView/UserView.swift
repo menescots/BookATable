@@ -25,6 +25,7 @@ struct UserView: View {
                 ZStack {
                     Button {
                         vm.isLogged = false
+                        print(isLogged)
                         UserDefaultsManager.shared.saveLoggedInState(false)
                         UserDefaultsManager.shared.removeEmailValue()
                     } label: {
